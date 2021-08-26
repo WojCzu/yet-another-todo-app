@@ -1,11 +1,11 @@
 import React from 'react';
+import { GlobalStyle } from 'assets/styles/GlobalStyle';
 
-const Root = () => {
-  return (
-    <div>
-      <h1>Hello world</h1>
-    </div>
-  );
-};
+const Root = () => (
+  <>
+    <GlobalStyle />
+    <h1>Hello</h1>
+  </>
+);
 
 export default Root;
