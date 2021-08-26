@@ -20,7 +20,4 @@ export const GlobalStyle = createGlobalStyle`
     button, a {
         font-family: 'Roboto', sans-serif;
     }
-    h1{
-        font-size: ${({ theme }) => theme.fontSize.xl};
-    }
 `;
