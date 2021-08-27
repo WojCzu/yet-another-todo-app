@@ -1,5 +1,6 @@
 import React from 'react';
 import trashcanIcon from 'assets/icons/trashcan.svg';
+import tickIcon from 'assets/icons/check-tick.svg';
 import styled from 'styled-components';
 
 const TaskList = () => {
@@ -7,18 +8,24 @@ const TaskList = () => {
     <Wrapper>
       <StyledList>
         <StyledLi>
-          <input type="checkbox" id="1" />
-          <label htmlFor="1">Finish app </label>
+          <Checkbox type="checkbox" id="1" />
+          <StyledLabel htmlFor="1" isChecked={false}>
+            Finish app
+          </StyledLabel>
           <StyledButton />
         </StyledLi>
         <StyledLi>
-          <input type="checkbox" id="2" />
-          <label htmlFor="2">Drink water (2l) </label>
+          <Checkbox type="checkbox" id="2" />
+          <StyledLabel htmlFor="2" isChecked={true}>
+            Drink water (2l){' '}
+          </StyledLabel>
           <StyledButton />
         </StyledLi>
         <StyledLi>
-          <input type="checkbox" id="3" />
-          <label htmlFor="3">Take creatine (5g) </label>
+          <Checkbox type="checkbox" id="3" />
+          <StyledLabel htmlFor="3" isChecked={false}>
+            Take creatine (5g){' '}
+          </StyledLabel>
           <StyledButton />
         </StyledLi>
       </StyledList>
@@ -42,10 +49,13 @@ const StyledList = styled.ul`
 `;
 
 const StyledLi = styled.li`
+  position: relative;
   padding: 10px;
+
   display: grid;
-  grid-template-columns: 40px 1fr 40px;
+  grid-template-columns: 1fr 40px;
   grid-gap: 10px;
+
   border-bottom: 1px solid ${({ theme }) => theme.color.gray};
   align-items: center;
 
@@ -58,12 +68,49 @@ const StyledButton = styled.button`
   width: 24px;
   height: 24px;
   padding: 0;
-  place-self: end;
+  place-self: center end;
 
   border: none;
   background: transparent url(${trashcanIcon}) no-repeat;
   background-size: contain;
   cursor: pointer;
+`;
+
+const Checkbox = styled.input`
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+`;
+
+const StyledLabel = styled.label`
+  margin-left: 34px;
+  position: relative;
+  cursor: pointer;
+
+  color: ${({ theme, isChecked }) =>
+    isChecked ? theme.color.darkGray : theme.color.black};
+  text-decoration: ${({ isChecked }) => (isChecked ? 'line-through' : 'none')};
+
+  &::before {
+    content: '';
+    width: 24px;
+    height: 24px;
+
+    position: absolute;
+    top: 50%;
+    left: -34px;
+
+    transform: translate(0, -50%);
+    border: ${({ theme, isChecked }) =>
+      isChecked ? 'none' : `1px solid ${theme.color.coral}`};
+    border-radius: 50%;
+
+    background: ${({ theme, isChecked }) =>
+      isChecked
+        ? `url(${tickIcon}) no-repeat center, linear-gradient(335deg, ${theme.color.coralLight}, ${theme.color.violet}) `
+        : ''};
+    background-size: auto 75%, 100%;
+  }
 `;
 
 export default TaskList;
