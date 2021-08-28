@@ -2,33 +2,26 @@ import React from 'react';
 import trashcanIcon from 'assets/icons/trashcan.svg';
 import tickIcon from 'assets/icons/check-tick.svg';
 import styled from 'styled-components';
+import data from 'data/tasks';
 
 const TaskList = () => {
   return (
     <Wrapper>
-      <StyledList>
-        <StyledLi>
-          <Checkbox type="checkbox" id="1" />
-          <StyledLabel htmlFor="1" isChecked={false}>
-            Finish app
-          </StyledLabel>
-          <StyledButton />
-        </StyledLi>
-        <StyledLi>
-          <Checkbox type="checkbox" id="2" />
-          <StyledLabel htmlFor="2" isChecked={true}>
-            Drink water (2l){' '}
-          </StyledLabel>
-          <StyledButton />
-        </StyledLi>
-        <StyledLi>
-          <Checkbox type="checkbox" id="3" />
-          <StyledLabel htmlFor="3" isChecked={false}>
-            Take creatine (5g){' '}
-          </StyledLabel>
-          <StyledButton />
-        </StyledLi>
-      </StyledList>
+      {data.length ? (
+        <StyledList>
+          {data.map(({ id, name, isFinished }) => (
+            <StyledLi key={id}>
+              <Checkbox type="checkbox" id={id} />
+              <StyledLabel htmlFor={id} isChecked={isFinished}>
+                {name}
+              </StyledLabel>
+              <StyledButton />
+            </StyledLi>
+          ))}
+        </StyledList>
+      ) : (
+        <div>Add your first task</div>
+      )}
     </Wrapper>
   );
 };
@@ -40,7 +33,7 @@ const Wrapper = styled.div`
   padding: 40px;
   border-radius: 24px;
   background-color: ${({ theme }) => theme.color.white};
-  box-shadow: 0 5px 15px -10px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.35);
 `;
 const StyledList = styled.ul`
   padding: 0;
