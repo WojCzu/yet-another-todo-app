@@ -5,7 +5,7 @@ const Task = ({ id, name, isFinished }) => {
   return (
     <Wrapper>
       <Checkbox type="checkbox" id={id} />
-      <StyledLabel htmlFor={id} isChecked={isFinished}>
+      <StyledLabel htmlFor={id} isFinished={isFinished}>
         {name}
       </StyledLabel>
       <StyledButton />
