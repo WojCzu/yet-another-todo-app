@@ -2,13 +2,13 @@ import React from 'react';
 import { GlobalStyle } from 'assets/styles/GlobalStyle';
 import styled, { ThemeProvider } from 'styled-components';
 import { theme } from 'assets/styles/theme';
-import TaskList from 'components/TaskList/TaskList';
 import {
   BrowserRouter as Router,
   Redirect,
   Route,
   Switch,
 } from 'react-router-dom';
+import App from './App';
 
 const Root = () => (
   <Wrapper>
@@ -17,7 +17,7 @@ const Root = () => (
         <GlobalStyle />
         <Switch>
           <Route exact path={['/all', '/unfinished', '/finished']}>
-            <TaskList />
+            <App />
           </Route>
           <Route>
             <Redirect to="/all" />
