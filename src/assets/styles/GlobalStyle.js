@@ -15,6 +15,8 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
         font-family: 'Roboto', sans-serif;
+        background-image: ${({ theme }) =>
+          `linear-gradient(135deg, ${theme.color.coralLight}, ${theme.color.violet})`};
     }
 
     button, a {

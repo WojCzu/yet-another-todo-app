@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import trashcanIcon from 'assets/icons/trashcan.svg';
 import tickIcon from 'assets/icons/check-tick.svg';
 
 export const Wrapper = styled.li`
@@ -16,18 +15,6 @@ export const Wrapper = styled.li`
   &:last-child {
     border-bottom: none;
   }
-`;
-
-export const StyledButton = styled.button`
-  width: 24px;
-  height: 24px;
-  padding: 0;
-  place-self: center end;
-
-  border: none;
-  background: transparent url(${trashcanIcon}) no-repeat;
-  background-size: contain;
-  cursor: pointer;
 `;
 
 export const Checkbox = styled.input`
