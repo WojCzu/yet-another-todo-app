@@ -41,9 +41,10 @@ export const StyledLabel = styled.label`
   position: relative;
   cursor: pointer;
 
-  color: ${({ theme, isChecked }) =>
-    isChecked ? theme.color.darkGray : theme.color.black};
-  text-decoration: ${({ isChecked }) => (isChecked ? 'line-through' : 'none')};
+  color: ${({ theme, isFinished }) =>
+    isFinished ? theme.color.darkGray : theme.color.black};
+  text-decoration: ${({ isFinished }) =>
+    isFinished ? 'line-through' : 'none'};
 
   &::before {
     content: '';
@@ -55,12 +56,12 @@ export const StyledLabel = styled.label`
     left: -34px;
 
     transform: translate(0, -50%);
-    border: ${({ theme, isChecked }) =>
-      isChecked ? 'none' : `1px solid ${theme.color.coral}`};
+    border: ${({ theme, isFinished }) =>
+      isFinished ? 'none' : `1px solid ${theme.color.coral}`};
     border-radius: 50%;
 
-    background: ${({ theme, isChecked }) =>
-      isChecked
+    background: ${({ theme, isFinished }) =>
+      isFinished
         ? `url(${tickIcon}) no-repeat center, linear-gradient(335deg, ${theme.color.coralLight}, ${theme.color.violet}) `
         : ''};
     background-size: auto 75%, 100%;

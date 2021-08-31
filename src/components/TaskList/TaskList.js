@@ -1,11 +1,10 @@
 import React from 'react';
-import data from 'data/tasks';
 import Task from 'components/Task/Task';
-import { Wrapper, StyledList } from './TaskList.styles';
+import { StyledList } from './TaskList.styles';
 
-const TaskList = () => {
+const TaskList = ({ data }) => {
   return (
-    <Wrapper>
+    <>
       {data.length ? (
         <StyledList>
           {data.map(({ id, name, isFinished }) => (
@@ -15,7 +14,7 @@ const TaskList = () => {
       ) : (
         <div>Add your first task</div>
       )}
-    </Wrapper>
+    </>
   );
 };
 
