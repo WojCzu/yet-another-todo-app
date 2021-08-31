@@ -1,5 +1,7 @@
 import React from 'react';
-import { Wrapper, Checkbox, StyledLabel, StyledButton } from './Task.styles';
+import Button from 'components/Button/Button';
+import trashcanIcon from 'assets/icons/trashcan.svg';
+import { Wrapper, Checkbox, StyledLabel } from './Task.styles';
 
 const Task = ({ id, name, isFinished }) => {
   return (
@@ -8,7 +10,7 @@ const Task = ({ id, name, isFinished }) => {
       <StyledLabel htmlFor={id} isFinished={isFinished}>
         {name}
       </StyledLabel>
-      <StyledButton />
+      <Button icon={trashcanIcon} />
     </Wrapper>
   );
 };
