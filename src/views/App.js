@@ -1,7 +1,7 @@
 import React from 'react';
 import TaskList from 'components/TaskList/TaskList';
 import NavBar from 'components/NavBar/NavBar';
-import { Wrapper } from './App.styles';
+import { Wrapper, Title } from './App.styles';
 import data from 'data/tasks';
 
 const App = () => {
@@ -11,6 +11,9 @@ const App = () => {
   );
   return (
     <>
+      <Title>
+        Yet another <span>ToDo app</span>
+      </Title>
       <Wrapper>
         <TaskList data={data} />
         <NavBar tasksLeft={tasksLeft} />
