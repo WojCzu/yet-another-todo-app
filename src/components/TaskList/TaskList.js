@@ -2,7 +2,7 @@ import React from 'react';
 import Task from 'components/Task/Task';
 import { StyledList } from './TaskList.styles';
 
-const TaskList = ({ data, deleteTask }) => {
+const TaskList = ({ data, deleteTask, finishTask }) => {
   return (
     <>
       {data.length ? (
@@ -14,6 +14,7 @@ const TaskList = ({ data, deleteTask }) => {
               name={name}
               isFinished={isFinished}
               deleteTask={deleteTask}
+              finishTask={finishTask}
             />
           ))}
         </StyledList>

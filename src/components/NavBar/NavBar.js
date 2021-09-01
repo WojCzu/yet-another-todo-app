@@ -7,7 +7,7 @@ import {
   StyledLink,
 } from './NavBar.styles';
 
-const NavBar = ({ tasksLeft }) => {
+const NavBar = ({ tasksLeft, clearFinished }) => {
   return (
     <Wrapper>
       <TaskInfo>
@@ -26,7 +26,7 @@ const NavBar = ({ tasksLeft }) => {
           </li>
         </NavList>
       </nav>
-      <ClearButton>clear finished</ClearButton>
+      <ClearButton onClick={clearFinished}>clear finished</ClearButton>
     </Wrapper>
   );
 };

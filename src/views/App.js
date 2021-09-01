@@ -12,9 +12,15 @@ const reducer = (state, action) => {
       return [...state, action.payload];
     case 'DEL_TASK':
       return state.filter(({ id }) => id !== action.payload.id);
+    case 'DEL_ALL_FINISHED':
+      return state.filter(({ isFinished }) => !isFinished);
     case 'FINISH_TASK':
-      return state;
-
+      return state.map((task) => {
+        if (task.id === action.payload.id) {
+          return { ...task, isFinished: !task.isFinished };
+        }
+        return task;
+      });
     default:
       return state;
   }
@@ -43,8 +49,14 @@ const App = () => {
         <TaskList
           data={data}
           deleteTask={(id) => dispatch({ type: 'DEL_TASK', payload: { id } })}
+          finishTask={(id) =>
+            dispatch({ type: 'FINISH_TASK', payload: { id } })
+          }
         />
-        <NavBar tasksLeft={tasksLeft} />
+        <NavBar
+          tasksLeft={tasksLeft}
+          clearFinished={() => dispatch({ type: 'DEL_ALL_FINISHED' })}
+        />
       </ListWrapper>
     </Wrapper>
   );
