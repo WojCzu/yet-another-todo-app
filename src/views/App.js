@@ -11,7 +11,7 @@ const reducer = (state, action) => {
     case 'ADD_TASK':
       return [...state, action.payload];
     case 'DEL_TASK':
-      return state;
+      return state.filter(({ id }) => id !== action.payload.id);
     case 'FINISH_TASK':
       return state;
 
@@ -23,7 +23,7 @@ const reducer = (state, action) => {
 const App = () => {
   const [data, dispatch] = useReducer(reducer, tasks);
   const tasksLeft = data.reduce(
-    (sum, task) => (task.isFinished ? sum + 1 : sum),
+    (sum, task) => (task.isFinished ? sum : sum + 1),
     0
   );
   return (
@@ -40,7 +40,10 @@ const App = () => {
         }
       />
       <ListWrapper>
-        <TaskList data={data} />
+        <TaskList
+          data={data}
+          deleteTask={(id) => dispatch({ type: 'DEL_TASK', payload: { id } })}
+        />
         <NavBar tasksLeft={tasksLeft} />
       </ListWrapper>
     </Wrapper>
