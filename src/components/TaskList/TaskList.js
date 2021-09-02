@@ -1,8 +1,11 @@
 import React from 'react';
 import Task from 'components/Task/Task';
 import { StyledList } from './TaskList.styles';
+import { useTask } from 'hooks/useTask';
 
-const TaskList = ({ data }) => {
+const TaskList = () => {
+  const { data } = useTask();
+
   return (
     <>
       {data.length ? (

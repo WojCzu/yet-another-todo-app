@@ -1,3 +1,4 @@
+import { useTask } from 'hooks/useTask';
 import React from 'react';
 import {
   Wrapper,
@@ -7,7 +8,8 @@ import {
   StyledLink,
 } from './NavBar.styles';
 
-const NavBar = ({ tasksLeft }) => {
+const NavBar = () => {
+  const { tasksLeft, clearFinished } = useTask();
   return (
     <Wrapper>
       <TaskInfo>
@@ -26,7 +28,7 @@ const NavBar = ({ tasksLeft }) => {
           </li>
         </NavList>
       </nav>
-      <ClearButton>clear finished</ClearButton>
+      <ClearButton onClick={clearFinished}>clear finished</ClearButton>
     </Wrapper>
   );
 };
