@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import Button from 'components/Button/Button';
 import plus from 'assets/icons/plus.svg';
 import { StyledForm, StyledInput } from './Input.styles';
+import { useTask } from 'hooks/useTask';
 
-const Input = ({ addUser }) => {
+const Input = () => {
   const [name, setName] = useState('');
+  const { addTask } = useTask();
+
   return (
     <StyledForm
       onSubmit={(e) => {
         e.preventDefault();
-        addUser(name);
+        addTask(name);
         setName('');
       }}
     >

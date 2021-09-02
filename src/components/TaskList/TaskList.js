@@ -1,21 +1,17 @@
 import React from 'react';
 import Task from 'components/Task/Task';
 import { StyledList } from './TaskList.styles';
+import { useTask } from 'hooks/useTask';
 
-const TaskList = ({ data, deleteTask, finishTask }) => {
+const TaskList = () => {
+  const { data } = useTask();
+
   return (
     <>
       {data.length ? (
         <StyledList>
           {data.map(({ id, name, isFinished }) => (
-            <Task
-              key={id}
-              id={id}
-              name={name}
-              isFinished={isFinished}
-              deleteTask={deleteTask}
-              finishTask={finishTask}
-            />
+            <Task key={id} id={id} name={name} isFinished={isFinished} />
           ))}
         </StyledList>
       ) : (
