@@ -5,3 +5,8 @@ export const StyledList = styled.ul`
   margin: 0;
   list-style: none;
 `;
+export const StyledInfo = styled.p`
+  margin: 0;
+  padding: 0 15px;
+  color: ${({ theme }) => theme.color.darkGray};
+`;

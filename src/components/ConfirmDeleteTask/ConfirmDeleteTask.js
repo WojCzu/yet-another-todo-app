@@ -31,6 +31,9 @@ const ConfirmDeleteTask = ({
         ? This cannot be undone.
       </StyledInfo>
       <ButtonsWrapper>
+        <StyledButton isPrimary onClick={handleCloseModal}>
+          Cancel
+        </StyledButton>
         <StyledButton
           onClick={() => {
             handleDelete();
@@ -38,9 +41,6 @@ const ConfirmDeleteTask = ({
           }}
         >
           Delete
-        </StyledButton>
-        <StyledButton isPrimary onClick={handleCloseModal}>
-          Cancel
         </StyledButton>
       </ButtonsWrapper>
     </>
