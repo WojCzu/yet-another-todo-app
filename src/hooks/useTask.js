@@ -1,5 +1,4 @@
-import React, { useReducer, useContext } from 'react';
-import tasks from 'data/tasks';
+import React, { useReducer, useContext, useEffect } from 'react';
 import { v4 as uuid } from 'uuid';
 
 const actionTypes = {
@@ -10,39 +9,38 @@ const actionTypes = {
 };
 
 const reducer = (state, action) => {
-  try {
-    switch (action.type) {
-      case actionTypes.addTask:
-        return [...state, action.payload];
+  switch (action.type) {
+    case actionTypes.addTask:
+      return [...state, action.payload];
 
-      case actionTypes.deleteTask:
-        return state.filter(({ id }) => id !== action.payload.id);
+    case actionTypes.deleteTask:
+      return state.filter(({ id }) => id !== action.payload.id);
 
-      case actionTypes.clearFinished:
-        return state.filter(({ isFinished }) => !isFinished);
+    case actionTypes.clearFinished:
+      return state.filter(({ isFinished }) => !isFinished);
 
-      case actionTypes.toggleFinish:
-        return state.map((task) => {
-          if (task.id === action.payload.id) {
-            return { ...task, isFinished: !task.isFinished };
-          }
-          return task;
-        });
+    case actionTypes.toggleFinish:
+      return state.map((task) => {
+        if (task.id === action.payload.id) {
+          return { ...task, isFinished: !task.isFinished };
+        }
+        return task;
+      });
 
-      default:
-        return state;
-    }
-  } finally {
-    console.log('save');
+    default:
+      return state;
   }
 };
 
-const initialState = tasks;
-
 const TaskContext = React.createContext({});
+const initialState = JSON.parse(localStorage.getItem('tasks'));
 
 export const TaskProvider = ({ children }) => {
   const [data, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(data));
+  }, [data]);
 
   const addTask = (name) =>
     dispatch({
