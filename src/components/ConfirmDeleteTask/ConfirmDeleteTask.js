@@ -19,8 +19,16 @@ const ConfirmDeleteTask = ({
       </StyledTitle>
       <StyledInfo>
         Are you sure you want to delete{' '}
-        <em>{isSingleTask ? taskName : 'all finished'}</em> task
-        {isSingleTask ? '' : 's'}? This cannot be undone.
+        {isSingleTask ? (
+          <>
+            <em>{taskName}</em> task
+          </>
+        ) : (
+          <>
+            <em>all finished</em> tasks
+          </>
+        )}
+        ? This cannot be undone.
       </StyledInfo>
       <ButtonsWrapper>
         <StyledButton
