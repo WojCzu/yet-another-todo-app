@@ -7,9 +7,12 @@ import {
   NavList,
   StyledLink,
 } from './NavBar.styles';
+import { useModal } from 'hooks/useModal';
+import Modal from 'components/Modal/Modal';
 
 const NavBar = () => {
   const { tasksLeft, clearFinished } = useTask();
+  const { isOpen, handleOpenModal, handleCloseModal } = useModal();
   return (
     <Wrapper>
       <TaskInfo>
@@ -28,7 +31,19 @@ const NavBar = () => {
           </li>
         </NavList>
       </nav>
-      <ClearButton onClick={clearFinished}>clear finished</ClearButton>
+      <ClearButton onClick={handleOpenModal}>clear finished</ClearButton>
+      {isOpen && (
+        <Modal isOpen={isOpen} onRequestClose={handleCloseModal}>
+          <button
+            onClick={() => {
+              clearFinished();
+              handleCloseModal();
+            }}
+          >
+            Delete
+          </button>
+        </Modal>
+      )}
     </Wrapper>
   );
 };
