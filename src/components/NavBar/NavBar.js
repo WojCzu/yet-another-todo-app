@@ -9,6 +9,7 @@ import {
 } from './NavBar.styles';
 import { useModal } from 'hooks/useModal';
 import Modal from 'components/Modal/Modal';
+import ConfirmDeleteTask from 'components/ConfirmDeleteTask/ConfirmDeleteTask';
 
 const NavBar = () => {
   const { tasksLeft, clearFinished } = useTask();
@@ -34,14 +35,10 @@ const NavBar = () => {
       <ClearButton onClick={handleOpenModal}>clear finished</ClearButton>
       {isOpen && (
         <Modal isOpen={isOpen} onRequestClose={handleCloseModal}>
-          <button
-            onClick={() => {
-              clearFinished();
-              handleCloseModal();
-            }}
-          >
-            Delete
-          </button>
+          <ConfirmDeleteTask
+            handleDelete={clearFinished}
+            handleCloseModal={handleCloseModal}
+          />
         </Modal>
       )}
     </Wrapper>

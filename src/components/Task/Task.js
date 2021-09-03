@@ -5,6 +5,7 @@ import { Wrapper, Checkbox, StyledLabel } from './Task.styles';
 import { useTask } from 'hooks/useTask';
 import { useModal } from 'hooks/useModal';
 import Modal from 'components/Modal/Modal';
+import ConfirmDeleteTask from 'components/ConfirmDeleteTask/ConfirmDeleteTask';
 
 const Task = ({ id, name, isFinished }) => {
   const { toggleFinish, deleteTask } = useTask();
@@ -19,14 +20,12 @@ const Task = ({ id, name, isFinished }) => {
       <Button icon={trashcanIcon} onClick={handleOpenModal} />
       {isOpen && (
         <Modal isOpen={isOpen} onRequestClose={handleCloseModal}>
-          <button
-            onClick={() => {
-              deleteTask(id);
-              handleCloseModal();
-            }}
-          >
-            Delete
-          </button>
+          <ConfirmDeleteTask
+            isSingleTask
+            handleDelete={() => deleteTask(id)}
+            handleCloseModal={handleCloseModal}
+            taskName={name}
+          />
         </Modal>
       )}
     </Wrapper>
