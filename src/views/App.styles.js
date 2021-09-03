@@ -12,6 +12,10 @@ export const Wrapper = styled.div`
     width: 90vw;
     max-width: 550px;
   }
+
+  @media (max-width: 460px) {
+    grid-template-rows: 210px 44px 1fr;
+  }
 `;
 export const ListWrapper = styled.div`
   padding: 40px 25px 10px;

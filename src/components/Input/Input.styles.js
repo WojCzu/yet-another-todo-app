@@ -8,13 +8,18 @@ export const StyledForm = styled.form`
   grid-gap: 15px;
   align-items: center;
 
-  border-radius: 2em;
+  border-radius: 24px;
   background: ${({ theme }) => theme.color.white};
   box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.35);
+
+  @media (max-width: 460px) {
+    padding: 10px 15px;
+  }
 `;
 
 export const StyledInput = styled.input`
   border: none;
   font-size: ${({ theme }) => theme.fontSize.m};
   background: none;
+  width: 100%;
 `;

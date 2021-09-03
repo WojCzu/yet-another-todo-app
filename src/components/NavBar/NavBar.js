@@ -6,6 +6,7 @@ import {
   ClearButton,
   NavList,
   StyledLink,
+  StyledNav,
 } from './NavBar.styles';
 import { useModal } from 'hooks/useModal';
 import Modal from 'components/Modal/Modal';
@@ -19,7 +20,7 @@ const NavBar = () => {
       <TaskInfo>
         {tasksLeft} task{tasksLeft === 1 ? '' : 's'} left
       </TaskInfo>
-      <nav>
+      <StyledNav>
         <NavList>
           <li>
             <StyledLink to="/all">All</StyledLink>
@@ -31,7 +32,7 @@ const NavBar = () => {
             <StyledLink to="/finished">Finished</StyledLink>
           </li>
         </NavList>
-      </nav>
+      </StyledNav>
       <ClearButton onClick={handleOpenModal}>clear finished</ClearButton>
       {isOpen && (
         <Modal isOpen={isOpen} onRequestClose={handleCloseModal}>

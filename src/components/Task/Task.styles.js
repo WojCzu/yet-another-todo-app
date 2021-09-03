@@ -15,6 +15,10 @@ export const Wrapper = styled.li`
   &:last-child {
     border-bottom: none;
   }
+
+  @media (max-width: 460px) {
+    padding: 10px 0;
+  }
 `;
 
 export const Checkbox = styled.input`
