@@ -12,8 +12,10 @@ const Input = () => {
     <StyledForm
       onSubmit={(e) => {
         e.preventDefault();
-        addTask(name);
-        setName('');
+        if (name.length > 2) {
+          addTask(name);
+          setName('');
+        }
       }}
     >
       <StyledInput
