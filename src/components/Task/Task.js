@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from 'components/Button/Button';
+import IconButton from 'components/IconButton/IconButton';
 import trashcanIcon from 'assets/icons/trashcan.svg';
 import { Wrapper, Checkbox, StyledLabel } from './Task.styles';
 import { useTask } from 'hooks/useTask';
@@ -13,11 +13,25 @@ const Task = ({ id, name, isFinished }) => {
 
   return (
     <Wrapper>
-      <Checkbox type="checkbox" id={id} onClick={() => toggleFinish(id)} />
+      <Checkbox
+        type="checkbox"
+        id={id}
+        defaultChecked={isFinished}
+        onChange={() => toggleFinish(id)}
+        onKeyPress={(e) => {
+          if (e.key === 'Enter') {
+            toggleFinish(id);
+          }
+        }}
+      />
       <StyledLabel htmlFor={id} isFinished={isFinished}>
         {name}
       </StyledLabel>
-      <Button icon={trashcanIcon} onClick={handleOpenModal} />
+      <IconButton
+        icon={trashcanIcon}
+        onClick={handleOpenModal}
+        srText={`delete "${name}" task`}
+      />
       {isOpen && (
         <Modal isOpen={isOpen} onRequestClose={handleCloseModal}>
           <ConfirmDeleteTask

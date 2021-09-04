@@ -22,4 +22,9 @@ export const GlobalStyle = createGlobalStyle`
     button, a {
         font-family: 'Roboto', sans-serif;
     }
+
+    *:focus {
+        outline: 1px dotted ${({ theme }) => theme.color.black};
+        outline-offset: 2px;
+    }
 `;

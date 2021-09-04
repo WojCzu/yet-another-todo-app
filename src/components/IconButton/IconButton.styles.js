@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Button = styled.button`
+export const StyledButton = styled.button`
   width: 24px;
   height: 24px;
   padding: 0;
@@ -11,5 +11,3 @@ const Button = styled.button`
   background-size: contain;
   cursor: pointer;
 `;
-
-export default Button;

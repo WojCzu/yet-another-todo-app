@@ -25,6 +25,11 @@ export const Checkbox = styled.input`
   position: absolute;
   z-index: -1;
   opacity: 0;
+
+  &:focus + *::before {
+    outline: 1px dotted ${({ theme }) => theme.color.black};
+    outline-offset: 2px;
+  }
 `;
 
 export const StyledLabel = styled.label`

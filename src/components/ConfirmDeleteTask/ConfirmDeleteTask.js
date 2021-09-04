@@ -14,10 +14,10 @@ const ConfirmDeleteTask = ({
 }) => {
   return (
     <>
-      <StyledTitle>
+      <StyledTitle id="modal__heading">
         {isSingleTask ? 'Delete task?' : 'Delete completed tasks?'}
       </StyledTitle>
-      <StyledInfo>
+      <StyledInfo id="modal__description">
         Are you sure you want to delete{' '}
         {isSingleTask ? (
           <>
