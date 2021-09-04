@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   display: grid;
-  grid-template-rows: 330px 44px 1fr;
+  grid-template-rows: 330px 75px 1fr;
   grid-gap: 16px;
-  align-items: start;
+  align-items: end;
   justify-content: center;
   min-height: 100vh;
 
@@ -18,6 +18,7 @@ export const Wrapper = styled.div`
   }
 `;
 export const ListWrapper = styled.div`
+  align-self: start;
   padding: 40px 25px 10px;
   border-radius: 24px;
   background-color: ${({ theme }) => theme.color.white};
@@ -25,8 +26,8 @@ export const ListWrapper = styled.div`
 `;
 
 export const Title = styled.h1`
-  color: white;
   align-self: center;
+  color: white;
   text-shadow: 0 4px 4px rgba(0, 0, 0, 0.35);
   text-transform: uppercase;
   font-size: ${({ theme }) => theme.fontSize.l};
