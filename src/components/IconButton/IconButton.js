@@ -2,9 +2,9 @@ import { SrOnly } from 'components/SrOnly/SrOnly';
 import React from 'react';
 import { StyledButton } from './IconButton.styles';
 
-const IconButton = ({ icon, srText }) => {
+const IconButton = ({ srText, ...props }) => {
   return (
-    <StyledButton icon={icon}>
+    <StyledButton {...props}>
       {srText && <SrOnly>{srText}</SrOnly>}
     </StyledButton>
   );
