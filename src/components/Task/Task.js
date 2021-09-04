@@ -13,7 +13,17 @@ const Task = ({ id, name, isFinished }) => {
 
   return (
     <Wrapper>
-      <Checkbox type="checkbox" id={id} onClick={() => toggleFinish(id)} />
+      <Checkbox
+        type="checkbox"
+        id={id}
+        defaultChecked={isFinished}
+        onChange={() => toggleFinish(id)}
+        onKeyPress={(e) => {
+          if (e.key === 'Enter') {
+            toggleFinish(id);
+          }
+        }}
+      />
       <StyledLabel htmlFor={id} isFinished={isFinished}>
         {name}
       </StyledLabel>
