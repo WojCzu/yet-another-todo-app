@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Button from 'components/Button/Button';
+import IconButton from 'components/IconButton/IconButton';
 import plus from 'assets/icons/plus.svg';
 import { StyledForm, StyledInput } from './Input.styles';
 import { useTask } from 'hooks/useTask';
@@ -24,7 +24,7 @@ const Input = () => {
         type="text"
         placeholder="Create a new task..."
       />
-      <Button icon={plus} type="submit" />
+      <IconButton icon={plus} type="submit" srText="add task" />
     </StyledForm>
   );
 };
